@@ -1,10 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/src/lib/utils/cn";
 
-// ===== ডেটা অ্যারে =====
 const stages = [
   {
     id: 1,
@@ -39,7 +38,6 @@ const stages = [
 export default function InsightFlow() {
   const ref = useRef<HTMLDivElement>(null);
 
-  // স্ক্রল ট্র্যাকিং - অনুভূমিক স্ক্রলের জন্য
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
@@ -47,7 +45,6 @@ export default function InsightFlow() {
 
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66.66%"]);
 
-  // কার্ড ভ্যারিয়েন্টস (এনিমেশন)
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: (i: number) => ({
@@ -67,11 +64,9 @@ export default function InsightFlow() {
       className=" container relative w-full bg-[#0A0A0A] overflow-hidden"
       style={{ height: "100vh" }}
     >
-      {/* স্টিকি কন্টেইনার - স্ক্রল করলে কন্টেন্ট সরে যাবে */}
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-        {/* হেডার */}
         <div className="px-8 md:px-16 mb-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -81,7 +76,7 @@ export default function InsightFlow() {
             <span className="text-[#6C63FF] text-sm font-medium">
               ● Intelligence Pipeline
             </span>
-          </motion.div>
+          </m.div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4">
             How Xai transforms data <br className="hidden sm:block" />
             into insights
@@ -92,10 +87,9 @@ export default function InsightFlow() {
           </p>
         </div>
 
-        {/* অনুভূমিক স্ক্রলিং কার্ড */}
-        <motion.div style={{ x }} className="flex gap-6 px-8 md:px-16">
+        <m.div style={{ x }} className="flex gap-6 px-8 md:px-16">
           {stages.map((stage, index) => (
-            <motion.div
+            <m.div
               key={stage.id}
               custom={index}
               initial="hidden"
@@ -117,10 +111,8 @@ export default function InsightFlow() {
                 "cursor-pointer"
               )}
             >
-              {/* আইকন */}
               <div className="text-5xl mb-4">{stage.icon}</div>
 
-              {/* স্টেজ নাম্বার */}
               <span
                 className="text-sm font-mono mb-2"
                 style={{ color: stage.color }}
@@ -128,18 +120,15 @@ export default function InsightFlow() {
                 0{stage.id} / 03
               </span>
 
-              {/* টাইটেল */}
               <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
                 {stage.title}
               </h3>
 
-              {/* ডেসক্রিপশন */}
               <p className="text-gray-400 text-sm md:text-base leading-relaxed flex-1">
                 {stage.description}
               </p>
 
-              {/* ডিটেইল (হোভার করলে দেখাবে) */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, height: 0 }}
                 whileHover={{ opacity: 1, height: "auto" }}
                 transition={{ duration: 0.3 }}
@@ -151,9 +140,8 @@ export default function InsightFlow() {
                 >
                   ⚡ {stage.detail}
                 </p>
-              </motion.div>
+              </m.div>
 
-              {/* কানেক্টিং লাইন (শুধু মাঝের কার্ডগুলোর জন্য) */}
               {index < stages.length - 1 && (
                 <div className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2">
                   <div
@@ -164,12 +152,11 @@ export default function InsightFlow() {
                   />
                 </div>
               )}
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
 
-        {/* স্ক্রল ইন্ডিকেটর (নিচে) */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
@@ -184,7 +171,7 @@ export default function InsightFlow() {
               )}
             />
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

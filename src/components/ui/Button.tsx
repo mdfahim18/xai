@@ -4,7 +4,6 @@ import { forwardRef, ButtonHTMLAttributes } from "react";
 import { m, HTMLMotionProps } from "framer-motion";
 import { cn } from "@/src/lib/utils/cn";
 
-// ===== ভ্যারিয়েন্ট ডেফিনেশন =====
 export type ButtonVariant = "primary" | "outline" | "ghost";
 export type ButtonSize = "sm" | "md";
 

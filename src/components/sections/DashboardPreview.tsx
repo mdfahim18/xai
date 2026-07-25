@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import {
   BarChart,
   Bar,
@@ -18,7 +18,6 @@ import {
 } from "recharts";
 import { cn } from "@/src/lib/utils/cn";
 
-// ===== ডামি ডেটা =====
 const barData = [
   { name: "Jan", value: 400 },
   { name: "Feb", value: 300 },
@@ -36,14 +35,12 @@ const pieData = [
 
 const COLORS = ["#6C63FF", "#00D4FF", "#FF6B6B"];
 
-// ===== সাইডবার মেনু =====
 const menuItems = [
   { id: "overview", icon: "📊", label: "Overview" },
   { id: "analytics", icon: "📈", label: "Analytics" },
   { id: "settings", icon: "⚙️", label: "Settings" },
 ];
 
-// ===== স্ট্যাট কার্ড ডেটা =====
 const stats = [
   { label: "Total Users", value: "12.5K", change: "+12%" },
   { label: "Revenue", value: "$48.2K", change: "+8.1%" },
@@ -53,12 +50,11 @@ const stats = [
 export default function DashboardPreview() {
   const [activeTab, setActiveTab] = useState("overview");
 
-  // ===== ট্যাব অনুযায়ী কন্টেন্ট =====
   const renderContent = () => {
     switch (activeTab) {
       case "overview":
         return (
-          <motion.div
+          <m.div
             key="overview"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -66,10 +62,9 @@ export default function DashboardPreview() {
             transition={{ duration: 0.3 }}
             className="space-y-6"
           >
-            {/* স্ট্যাট কার্ড */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {stats.map((stat, i) => (
-                <motion.div
+                <m.div
                   key={stat.label}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -84,12 +79,11 @@ export default function DashboardPreview() {
                   <p className="text-xs text-green-400 mt-1">
                     {stat.change} from last month
                   </p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
 
-            {/* বার চার্ট */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -114,13 +108,13 @@ export default function DashboardPreview() {
                   </BarChart>
                 </ResponsiveContainer>
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         );
 
       case "analytics":
         return (
-          <motion.div
+          <m.div
             key="analytics"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,7 +122,6 @@ export default function DashboardPreview() {
             transition={{ duration: 0.3 }}
             className="space-y-6"
           >
-            {/* লাইন চার্ট */}
             <div className="bg-[#111111] p-6 rounded-xl border border-[#2A2A2A]">
               <h4 className="text-white font-medium mb-4">
                 User Growth (Last 6 Months)
@@ -159,7 +152,6 @@ export default function DashboardPreview() {
               </div>
             </div>
 
-            {/* পাই চার্ট */}
             <div className="bg-[#111111] p-6 rounded-xl border border-[#2A2A2A]">
               <h4 className="text-white font-medium mb-4">Traffic Sources</h4>
               <div className="h-64">
@@ -193,12 +185,12 @@ export default function DashboardPreview() {
                 </ResponsiveContainer>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         );
 
       case "settings":
         return (
-          <motion.div
+          <m.div
             key="settings"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -208,7 +200,7 @@ export default function DashboardPreview() {
           >
             {["Profile", "Security", "Notifications", "Integrations"].map(
               (item, i) => (
-                <motion.div
+                <m.div
                   key={item}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -218,10 +210,10 @@ export default function DashboardPreview() {
                 >
                   <span className="text-white">{item}</span>
                   <span className="text-gray-400 text-sm">→</span>
-                </motion.div>
+                </m.div>
               )
             )}
-          </motion.div>
+          </m.div>
         );
 
       default:
@@ -232,8 +224,8 @@ export default function DashboardPreview() {
   return (
     <section className=" container w-full bg-[#0A0A0A] py-20 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
-        {/* হেডার */}
-        <motion.div
+        {/* Header */}
+        <m.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -251,10 +243,9 @@ export default function DashboardPreview() {
           <p className="text-gray-400 text-base md:text-lg mt-2">
             Monitor, analyze, and act on your data in real-time.
           </p>
-        </motion.div>
+        </m.div>
 
-        {/* ড্যাশবোর্ড UI */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -262,7 +253,6 @@ export default function DashboardPreview() {
           className="bg-[#1A1A1A] rounded-2xl border border-[#2A2A2A] overflow-hidden shadow-2xl"
         >
           <div className="flex flex-col md:flex-row">
-            {/* সাইডবার */}
             <div className="w-full md:w-[220px] bg-[#111111] p-4 border-b md:border-b-0 md:border-r border-[#2A2A2A]">
               <div className="flex items-center gap-2 mb-6 px-3">
                 <div className="w-8 h-8 bg-[#6C63FF] rounded-lg flex items-center justify-center text-white font-bold text-sm">
@@ -272,7 +262,7 @@ export default function DashboardPreview() {
               </div>
               <nav className="space-y-1">
                 {menuItems.map((item) => (
-                  <motion.button
+                  <m.button
                     key={item.id}
                     onClick={() => setActiveTab(item.id)}
                     whileHover={{ x: 4 }}
@@ -286,17 +276,16 @@ export default function DashboardPreview() {
                   >
                     <span className="text-lg">{item.icon}</span>
                     <span className="text-sm font-medium">{item.label}</span>
-                  </motion.button>
+                  </m.button>
                 ))}
               </nav>
             </div>
 
-            {/* মেইন কন্টেন্ট */}
             <div className="flex-1 p-6 md:p-8">
               <AnimatePresence mode="wait">{renderContent()}</AnimatePresence>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

@@ -2,12 +2,10 @@
 
 import { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useScroll } from "framer-motion";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import * as THREE from "three";
 import { cn } from "@/src/lib/utils/cn";
 
-// ===== 3D অবজেক্ট কম্পোনেন্ট =====
 function TorusObject({
   isActive,
   scrollProgress,
@@ -20,11 +18,9 @@ function TorusObject({
 
   useFrame((state, delta) => {
     if (meshRef.current) {
-      // নিজে নিজে ধীরে ঘোরানো
       meshRef.current.rotation.x += delta * 0.2;
       meshRef.current.rotation.y += delta * 0.3;
 
-      // মাউসের সাথে কাত হওয়া (টিল্ট)
       const mouseX = (state.mouse.x - 0) * 0.5;
       const mouseY = (state.mouse.y - 0) * 0.5;
       meshRef.current.rotation.x +=
@@ -32,11 +28,9 @@ function TorusObject({
       meshRef.current.rotation.y +=
         (mouseX - meshRef.current.rotation.y) * 0.02;
 
-      // স্ক্রল অনুযায়ী স্কেল ও রঙ পরিবর্তন
       const scale = 1 + scrollProgress * 0.5;
       meshRef.current.scale.set(scale, scale, scale);
 
-      // ক্লিক অ্যাক্টিভ হলে আরও অ্যানিমেশন
       if (isActive) {
         meshRef.current.rotation.x += delta * 0.5;
         meshRef.current.rotation.y += delta * 0.7;
@@ -70,13 +64,11 @@ function TorusObject({
   );
 }
 
-// ===== মেইন কম্পোনেন্ট =====
 export default function SignatureMoment() {
   const [isActive, setIsActive] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  // স্ক্রল ট্র্যাকিং
   useEffect(() => {
     const handleScroll = () => {
       if (containerRef.current) {
@@ -97,12 +89,10 @@ export default function SignatureMoment() {
       ref={containerRef}
       className=" container relative w-full bg-[#0A0A0A] py-20 px-4 md:px-8 overflow-hidden"
     >
-      {/* গ্লো ইফেক্ট (পেছনে) */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#6C63FF] rounded-full blur-[150px] opacity-10" />
 
       <div className="max-w-6xl mx-auto text-center relative z-10">
-        {/* ব্যাজ */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -112,10 +102,9 @@ export default function SignatureMoment() {
           <span className="text-[#6C63FF] text-sm font-medium">
             ✦ Signature Interaction
           </span>
-        </motion.div>
+        </m.div>
 
-        {/* হেডিং */}
-        <motion.h2
+        <m.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -123,9 +112,9 @@ export default function SignatureMoment() {
           className="text-3xl md:text-4xl lg:text-5xl font-bold text-white"
         >
           Where data becomes intelligence
-        </motion.h2>
+        </m.h2>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -133,10 +122,10 @@ export default function SignatureMoment() {
           className="text-gray-400 text-base md:text-lg mt-2 mb-8"
         >
           Move your mouse to tilt. Scroll to morph. Click to activate.
-        </motion.p>
+        </m.p>
 
-        {/* 3D ক্যানভাস */}
-        <motion.div
+        {/* canvas */}
+        <m.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -149,10 +138,9 @@ export default function SignatureMoment() {
             <pointLight position={[-10, -10, -10]} />
             <TorusObject isActive={isActive} scrollProgress={scrollProgress} />
           </Canvas>
-        </motion.div>
+        </m.div>
 
-        {/* অ্যাক্টিভ বাটন */}
-        <motion.button
+        <m.button
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -166,9 +154,8 @@ export default function SignatureMoment() {
           )}
         >
           {isActive ? "⏹ Stop AI" : "⚡ Activate AI"}
-        </motion.button>
+        </m.button>
 
-        {/* স্ট্যাটাস টেক্সট */}
         <p className="text-[#555] text-sm mt-6 font-mono">
           {isActive
             ? "🔴 Active: 3D object is morphing"

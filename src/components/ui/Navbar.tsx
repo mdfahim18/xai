@@ -18,7 +18,6 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-[#0A0A0A]/80 backdrop-blur-xl border-b border-[#2A2A2A]/50 shadow-glow">
       <div className="container px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* লোগো */}
           <a href="#" className="flex items-center gap-2.5 group shrink-0">
             <div className="w-9 h-9 bg-gradient-to-br from-[#6C63FF] to-[#00D4FF] rounded-xl flex items-center justify-center shadow-glow group-hover:shadow-glow-strong transition-shadow duration-300">
               <svg
@@ -41,7 +40,6 @@ export default function Navbar() {
             </span>
           </a>
 
-          {/* মেনু - একদম মাঝে */}
           <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
             {menuItems.map((item) => (
               <a
@@ -69,7 +67,6 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* ডান পাশে CTA + মোবাইল টগল */}
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-3">
               <Button
@@ -117,7 +114,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* মোবাইল মেনু */}
       {isMobileMenuOpen && (
         <div className="md:hidden border-t border-[#2A2A2A]/50 bg-[#0A0A0A]/95 backdrop-blur-xl">
           <div className="flex flex-col p-4 space-y-3">
