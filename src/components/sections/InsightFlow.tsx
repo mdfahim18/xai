@@ -65,7 +65,7 @@ export default function InsightFlow() {
     <section
       ref={ref}
       className=" container relative w-full bg-[#0A0A0A] overflow-hidden"
-      style={{ height: "200vh" }}
+      style={{ height: "100vh" }}
     >
       {/* স্টিকি কন্টেইনার - স্ক্রল করলে কন্টেন্ট সরে যাবে */}
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
