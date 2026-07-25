@@ -87,7 +87,7 @@ export default function SignatureMoment() {
   return (
     <section
       ref={containerRef}
-      className=" container relative w-full bg-[#0A0A0A] py-20 px-4 md:px-8 overflow-hidden"
+      className=" container relative w-full bg-[#0A0A0A] py-20 pb-14 px-4 md:px-8 overflow-hidden"
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#6C63FF] rounded-full blur-[150px] opacity-10" />
 
