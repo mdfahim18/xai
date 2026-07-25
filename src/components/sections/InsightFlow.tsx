@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { m, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform, type Variants } from "framer-motion";
 import { cn } from "@/src/lib/utils/cn";
 
 const stages = [
@@ -45,7 +45,7 @@ export default function InsightFlow() {
 
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66.66%"]);
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: (i: number) => ({
       opacity: 1,

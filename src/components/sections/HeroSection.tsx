@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
@@ -8,18 +8,17 @@ import { m } from "framer-motion";
 
 function ParticleField() {
   const ref = useRef<THREE.Points>(null);
-
-  const particles = useMemo(() => {
-    const positions = new Float32Array(1500 * 3);
-    for (let i = 0; i < 1500 * 3; i++) {
-      positions[i] = (Math.random() - 0.5) * 8; // -4 থেকে +4 এর মধ্যে
-    }
-    return positions;
-  }, []);
-
   const mouse = useRef({ x: 0, y: 0 });
 
-  useMemo(() => {
+  const [particles] = useState<Float32Array>(() => {
+    const positions = new Float32Array(1500 * 3);
+    for (let i = 0; i < 1500 * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 8;
+    }
+    return positions;
+  });
+
+  useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;

@@ -1,5 +1,3 @@
-// import Button from "@/components/ui/Button";
-
 import HeroSection from "../components/sections/HeroSection";
 import InsightFlow from "../components/sections/InsightFlow";
 import DashboardPreview from "../components/sections/DashboardPreview";
