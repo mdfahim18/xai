@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Xai – Intelligence Workspace
 
-## Getting Started
+A single-page interactive product experience that visually demonstrates how raw data transforms into actionable intelligence through AI. Built with Next.js, TypeScript, and modern animation libraries.
 
-First, run the development server:
+---
+
+## 🚀 Live Demo
+
+[View Live Demo](https://xai-seven-khaki.vercel.app/)
+
+---
+
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [Technology Stack](#technology-stack)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Animation Decisions](#animation-decisions)
+- [Project Structure](#project-structure)
+- [Deliverables](#deliverables)
+- [License](#license)
+
+---
+
+## 📖 Overview
+
+Xai is a product-quality interactive UI prototype designed for the RacoAI Frontend Challenge. The experience walks users through the journey of data transformation:
+
+**Raw Data → Structured Intelligence → Actionable Insight → AI Automations**
+
+The interface combines clean UI/UX design, advanced motion, and 3D interaction to create a calm but powerful experience tailored for decision-makers.
+
+---
+
+## 🛠️ Technology Stack
+
+| Category               | Technology                   |
+| ---------------------- | ---------------------------- |
+| **Framework**          | Next.js 15 (App Router)      |
+| **Language**           | TypeScript                   |
+| **Styling**            | Tailwind CSS                 |
+| **UI Animations**      | Framer Motion                |
+| **3D Graphics**        | Three.js + React Three Fiber |
+| **Data Visualization** | Recharts                     |
+| **Deployment**         | Vercel                       |
+
+---
+
+## ✨ Features
+
+- **Hero Section** – Immersive 3D particle field that reacts to mouse movement
+- **Insight Flow** – Horizontal scroll section with 3 stages (Ingest → Analyze → Generate)
+- **Dashboard Preview** – Mock product UI with sidebar navigation, tabs, and interactive charts
+- **Signature Interaction** – Reactive 3D torus object that morphs on scroll and click
+- **Fully Responsive** – Optimized for desktop, tablet, and mobile devices
+- **Dark Theme** – Professional, modern aesthetic inspired by Linear and Vercel
+
+---
+
+## 🚦 Getting Started
+
+Follow these steps to run the project locally:
+
+### Prerequisites
+
+- Node.js 18.0 or later
+- npm or yarn
+
+### Installation
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/mdfahim18/xai
+
+# 2. Navigate to the project directory
+cd xai-frontend-challenge
+
+# 3. Install dependencies
+npm install
+
+# 4. Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
