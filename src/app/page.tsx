@@ -6,7 +6,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/src/components/ui/Card";
-import Hero from "../components/ui/Hero";
+import HeroSection from "../components/sections/HeroSection";
 // import HeroSection from "@/components/sections/HeroSection";
 // import InsightFlow from "@/components/sections/InsightFlow";
 // import DashboardPreview from "@/components/sections/DashboardPreview";
@@ -15,7 +15,7 @@ import Hero from "../components/ui/Hero";
 export default function Home() {
   return (
     <>
-      <Hero />
+      <HeroSection />
     </>
   );
 }
