@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, ButtonHTMLAttributes } from "react";
-import { motion, HTMLMotionProps } from "framer-motion";
+import { m, HTMLMotionProps } from "framer-motion";
 import { cn } from "@/src/lib/utils/cn";
 
 // ===== ভ্যারিয়েন্ট ডেফিনেশন =====
@@ -83,7 +83,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     if (as === "motion") {
       const motionRest = rest as HTMLMotionProps<"button">;
       return (
-        <motion.button
+        <m.button
           ref={ref}
           className={baseStyles}
           whileHover={{ scale: 1.02 }}
@@ -92,7 +92,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           {...motionRest}
         >
           {children}
-        </motion.button>
+        </m.button>
       );
     }
 
